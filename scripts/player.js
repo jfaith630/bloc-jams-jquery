@@ -14,6 +14,16 @@ class Player {
     return this.soundObject.getTime();
   }
 
+  prettyTime (timeInSeconds) {
+    const minutes = Math.floor(timeInSeconds/60);
+    const seconds = Math.floor(timeInSeconds - minutes*60);
+    if (seconds <= 9) {
+      return minutes + ":0" + seconds;
+    } else {
+    return minutes + ":" + seconds;
+    };
+  }
+
   playPause (song = this.currentlyPlaying) {
     if (this.currentlyPlaying !== song) {
       // Stop the currently playing sound file (even if nothing is playing)
